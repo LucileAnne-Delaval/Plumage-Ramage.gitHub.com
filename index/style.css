@@ -7,7 +7,7 @@ body {
 #index {
     margin: 30px;
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 15% 1fr;
 }
 
 img {
@@ -24,7 +24,7 @@ img {
         top: 0;
         height: 100vh;
         box-sizing: border-box;
-        border-right: 2px solid;
+        border-right: 5px solid;
         border-bottom: 0px solid;
 
 
@@ -35,12 +35,12 @@ img {
     list-style-type: disc;
     margin-block-start: 1em;
     margin-block-end: 1em;
-    margin-inline-start: -70px;
-    margin-inline-end: -28px;
+    margin-inline-start: -100px;
+    margin-inline-end: -50px;
     padding-inline-start: 40px;
     box-sizing: border-box;
    padding-bottom : 20px;
-    border-bottom: 2px solid;
+    border-bottom: 5px solid;
 }
 
 .header-titre{
@@ -48,7 +48,7 @@ img {
     color: black;
     font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 500;
-    font-size: 40px;
+    font-size: 70px;
 }
 
 .header-sous-titre{
@@ -56,19 +56,84 @@ img {
     color: black;
     font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 400;
-    font-size: 13px;
+    font-size:50px;
 }
+
 
 #src {
     display : block;
     padding: 3%;
+
 }
 
 .txt-index {
+    text-align: center;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 500;
+    font-size: 100px;
+}
+
+
+
+#references {
+
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    gap : 20px;
+    padding: 5%;
+}
+
+#references img {
+    box-sizing: border-box;
+    border: 5px solid;
+}
+
+.txt-ref {
+    padding-left: 10%;
     text-decoration: none;
     color: black;
     font-family: 'Zen Maru Gothic', sans-serif;
-    font-weight: 400;
+    font-weight: 200;
+    font-size: 50px;
+}
+
+.ref-titre {
+    text-decoration: none;
+    color: black;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 500;
+    font-size: 100px;
+    margin-left : -20px;
+    margin-top: 0px;
+
+}
+
+
+#recherches {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 5%;
+}
+
+#projet {
+
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 5%;
+}
+
+.code {
+
+    display: block;
+    margin : 0;
+    margin-top : -40px;
+    padding-left : 5%;
+    font-family: 'Space Mono', monospace;
+    font-weight: 500;
     font-size: 30px;
+
 
 }
