@@ -118,11 +118,30 @@ img {
     padding: 5%;
 }
 
+#recherches_x {
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 5%;
+    gap: 20px;
+}
+
+
 #projet {
+
+    display: grid;
+    grid-template-columns: 1fr, 1fr, 1fr;
+    padding: 5%;
+}
+
+#projet_video {
 
     display: grid;
     grid-template-columns: 1fr;
     padding: 5%;
+    max-width: 10%;
+    height: auto;
+   
 }
 
 .code {

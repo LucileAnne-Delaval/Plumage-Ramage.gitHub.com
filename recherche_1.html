@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio</title>
+    <link rel="stylesheet" href="index/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Quicksand:wght@300&display=swap"
+        rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Zen+Maru+Gothic:wght@300;500;900&display=swap" rel="stylesheet">
+</head>
+
+<body >
+ <div id="index">
+
+    <div id ="gauche">
+    <header class="header">
+        
+        <a class= "header-titre" href="Index.html"> PLUMAGE <br>ET <br>RAMAGE  </h1>
+
+
+</header>
+<div class="header">
+    <a class= "header-titre" href="references.html"> RÉFÉRENCES  </a>
+     <h1 class= "header-sous-titre"> Partitions musicales </h1>
+     <h1 class= "header-sous-titre"> Son générateur de formes </h1>
+     <h1 class= "header-sous-titre"> Typographie Asémique </h1>
+     <h1 class= "header-sous-titre"> Écrire le geste </h1>
+</div>
+<div class="header">
+    <a class= "header-titre" href="recherches.html"> RECHERCHES </a>
+     <h1 class= "header-sous-titre"> Son </h1>
+     <h1 class= "header-sous-titre"> Reflets </h1>
+     <h1 class= "header-sous-titre"> Signes </h1>
+</div>
+<div class="header">
+    <a class= "header-titre" href="projet.html"> PROJET </a>
+     <h1 class= "header-sous-titre"> Le projet </h1>
+     <h1 class= "header-sous-titre"> Vidéo </h1>
+     <h1 class= "header-sous-titre"> Spécimen </h1>
+     <h1 class= "header-sous-titre"> Affiches </h1>
+</div>
+
+</div>
+ 
+<div id="recherches_x">
+
+  <video controls>
+        <source src="recherche-1.mov" type="video/mp4">
+    </video>
+
+    <div class="code"> <p> float angle = 0; <br>
+  
+        import ddf.minim.*;<br>
+        import ddf.minim.analysis.*;<br>
+        
+        Minim minim;<br>
+        AudioPlayer song;<br>
+        BeatDetect beat;<br>
+        
+        
+        
+        float eRadius;<br>
+         
+        float a = 0;<br>
+        <br>
+        
+        void setup() {<br>
+          size(600, 600, P3D);<br>
+          noStroke();<br>
+          minim = new Minim(this);<br>
+          song = minim.loadFile("martin-pecheur_005.mp3", 2048);<br>
+          song.play();<br>
+          beat = new BeatDetect();<br>
+          eRadius = 10; }<br>
+          <br>
+        void draw() {<br>
+          defineLights();<br>
+          background(0);<br>
+          beat.detect(song.mix);<br>
+          float a = map(eRadius, 20, 80, 60, 255);<br>
+          <br>
+          if ( beat.isOnset() ) eRadius = 80;<br>
+          for (int x = 0; x <= width; x += 60) { <br>
+            for (int y = 0; y <= height; y += 60) {<br>
+              pushMatrix();<br>
+              translate(x, y);<br>
+              rotateY(map(a , 0, width, 0, PI));<br>
+              rotateX(map(a, 0, height, 0, PI));<br>
+           box(80);    <br> 
+              popMatrix(); } }<br>
+          eRadius *= 0.95;<br>
+          if ( eRadius < 20 ) eRadius -=30;}<br>
+          <br>
+        void defineLights() {<br>
+          // Orange point light on the right<br>
+          pointLight(230, 127, 0, 100, -50, 0); <br>
+          <br>
+          // Blue directional light from the left<br>
+          directionalLight(0, 102, 255, 100, 200, 0);   <br>
+          <br>
+          // Yellow spotlight from the front<br>
+          spotLight(255, 155, 109, 0, 40, 200, 0, -0.5, -0.5,  PI / 2, 2);  }</p> </div>
+
+ </div>
+</div>
+
+</body>
+
+</html>

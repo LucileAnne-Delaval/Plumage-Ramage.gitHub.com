@@ -57,65 +57,11 @@
  
 <div id="recherches">
 
-    <p class="txt-index">  </p>
-    <video controls>
+<a href="recherche_1.html"> 
+  <video controls>
         <source src="recherche-1.mov" type="video/mp4">
     </video>
-
-    <div class="code"> <p> float angle = 0; <br>
-  
-        import ddf.minim.*;<br>
-        import ddf.minim.analysis.*;<br>
-        
-        Minim minim;<br>
-        AudioPlayer song;<br>
-        BeatDetect beat;<br>
-        
-        
-        
-        float eRadius;<br>
-         
-        float a = 0;<br>
-        <br>
-        
-        void setup() {<br>
-          size(600, 600, P3D);<br>
-          noStroke();<br>
-          minim = new Minim(this);<br>
-          song = minim.loadFile("martin-pecheur_005.mp3", 2048);<br>
-          song.play();<br>
-          beat = new BeatDetect();<br>
-          eRadius = 10; }<br>
-          <br>
-        void draw() {<br>
-          defineLights();<br>
-          background(0);<br>
-          beat.detect(song.mix);<br>
-          float a = map(eRadius, 20, 80, 60, 255);<br>
-          <br>
-          if ( beat.isOnset() ) eRadius = 80;<br>
-          for (int x = 0; x <= width; x += 60) { <br>
-            for (int y = 0; y <= height; y += 60) {<br>
-              pushMatrix();<br>
-              translate(x, y);<br>
-              rotateY(map(a , 0, width, 0, PI));<br>
-              rotateX(map(a, 0, height, 0, PI));<br>
-           box(80);    <br> 
-              popMatrix(); } }<br>
-          eRadius *= 0.95;<br>
-          if ( eRadius < 20 ) eRadius -=30;}<br>
-          <br>
-        void defineLights() {<br>
-          // Orange point light on the right<br>
-          pointLight(230, 127, 0, 100, -50, 0); <br>
-          <br>
-          // Blue directional light from the left<br>
-          directionalLight(0, 102, 255, 100, 200, 0);   <br>
-          <br>
-          // Yellow spotlight from the front<br>
-          spotLight(255, 155, 109, 0, 40, 200, 0, -0.5, -0.5,  PI / 2, 2);  }</p> </div>
-
- </div>
+</a>
 </div>
 
 </body>
