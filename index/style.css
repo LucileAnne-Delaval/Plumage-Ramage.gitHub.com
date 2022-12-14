@@ -127,22 +127,55 @@ img {
 }
 
 
-#projet {
 
-    display: grid;
-    grid-template-columns: 1fr, 1fr, 1fr;
-    padding: 5%;
-}
 
-#projet_video {
+.projet_video {
 
     display: grid;
     grid-template-columns: 1fr;
-    padding: 5%;
+    padding-left: 5%;
     max-width: 10%;
     height: auto;
    
 }
+
+.projet_specimen {
+
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    padding: 5%;
+    max-width: 100%;
+    height: auto;
+   
+}
+
+.projet_specimen_page img {
+
+    border: 2px solid;
+}
+
+.projet_specimen_2c {
+
+
+grid-column:1/4 ;
+    max-width: 100%;
+    height: auto;
+    border: 0px solid;
+}
+
+.reflet {
+    display: block;
+    position: absolute;
+    transform: rotate(180deg);
+    top:2000px;
+    right: -2000px;
+    mix-blend-mode: multiply;
+    width: 200%;
+}
+
+
 
 .code {
 
@@ -153,6 +186,5 @@ img {
     font-family: 'Space Mono', monospace;
     font-weight: 500;
     font-size: 30px;
-
 
 }
