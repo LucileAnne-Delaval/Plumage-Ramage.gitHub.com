@@ -114,8 +114,12 @@ img {
 #recherches {
 
     display: grid;
+    margin-left : -150px;
+    margin-top : -150px;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
     padding: 5%;
+
 }
 
 #recherches_x {
