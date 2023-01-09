@@ -75,6 +75,15 @@ img {
     font-size: 100px;
 }
 
+.txt-intro {
+    text-align: left;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 500;
+    font-size: 50px;
+}
+
 
 
 #references {
@@ -130,6 +139,30 @@ img {
     gap: 20px;
 }
 
+#recherches_x_main {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 5%;
+    gap: 20px;
+}
+
+
+
+.recherches_titres {
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 500;
+    font-size: 70px;
+    padding-top: 500px;
+    margin: 0px;
+    
+}
+
+
 
 
 
@@ -141,6 +174,17 @@ img {
     max-width: 10%;
     height: auto;
    
+}
+
+.signe_video {
+
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-left: 5%;
+    max-width: 10%;
+    height: auto;
+   margin-top: -300px;
+   margin-bottom: -100px;
 }
 
 .projet_specimen {

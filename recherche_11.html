@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio</title>
+    <link rel="stylesheet" href="index/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Quicksand:wght@300&display=swap"
+        rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Zen+Maru+Gothic:wght@300;500;900&display=swap" rel="stylesheet">
+</head>
+
+<body >
+ <div id="index">
+
+    <div id ="gauche">
+    <header class="header">
+        
+        <a class= "header-titre" href="Index.html"> PLUMAGE <br>ET <br>RAMAGE  </h1>
+
+
+</header>
+<div class="header">
+    <a class= "header-titre" href="references.html"> RÉFÉRENCES  </a>
+     <h1 class= "header-sous-titre"> Partitions musicales </h1>
+     <h1 class= "header-sous-titre"> Son générateur de formes </h1>
+     <h1 class= "header-sous-titre"> Typographie Asémique </h1>
+     <h1 class= "header-sous-titre"> Écrire le geste </h1>
+</div>
+<div class="header">
+    <a class= "header-titre" href="recherches.html"> RECHERCHES </a>
+     <h1 class= "header-sous-titre"> Son </h1>
+     <h1 class= "header-sous-titre"> Reflets </h1>
+     <h1 class= "header-sous-titre"> Signes </h1>
+</div>
+<div class="header">
+    <a class= "header-titre" href="projet.html"> PROJET </a>
+     <h1 class= "header-sous-titre"> Le projet </h1>
+     <h1 class= "header-sous-titre"> Vidéo </h1>
+     <h1 class= "header-sous-titre"> Spécimen </h1>
+     <h1 class= "header-sous-titre"> Affiches </h1>
+</div>
+
+</div>
+ 
+<div id="recherches_x">
+
+  <video autoplay loop>
+        <source src="recherche-11.mov" type="video/mp4">
+    </video>
+
+    <div class="code"> <p> CODE DE DÉPART : <br><br>
+        
+        Flock flock;<br>
+float suivre = 0;<br>
+
+void setup() {<br>
+  background(0);<br>
+  size(600, 600);<br>
+  flock = new Flock();<br>
+
+  for (int i = 0; i < 750; i++) {<br>
+    flock.addBoid(new Boid(1, 1)); <br>
+  }<br>
+}<br><br>
+
+void draw() {<br>
+  fill(0, 30); //traînée<br>
+  noStroke();<br>
+  rect(0, 0, width*2, height*2);<br>
+  flock.run();
+}
+<br>
+
+void mousePressed() {<br>
+  flock.addBoid(new Boid(mouseX, mouseY));
+}
+<br>
+<br>
+
+class Flock {<br>
+  ArrayList<Boid> boids; // An ArrayList for all the boids<br>
+
+  Flock() {<br>
+    boids = new ArrayList<Boid>(); // Initialize the ArrayList }<br>
+        <br>
+  void run() {<br>
+    for (Boid b : boids) {<br>
+      b.run(boids);  // Passing the entire list of boids to each boid individually
+    }<br>
+  }<br><br>
+
+  void addBoid(Boid b) {<br>
+    boids.add(b);
+  }<br>
+}<br><br>
+
+
+
+class Boid {<br>
+
+  PVector position;<br>
+  PVector velocity;<br>
+  PVector acceleration;<br>
+  float r;<br>
+  float maxforce;    // Maximum steering force<br>
+  float maxspeed;    // Maximum speed<br>
+
+  Boid(float x, float y) {<br>
+    acceleration = new PVector(0, 0);<br>
+
+
+    float angle = random(TWO_PI);<br>
+    velocity = new PVector(cos(angle), sin(angle));<br>
+    position = new PVector(x, y);<br>
+    r = 5.0;<br>
+    maxspeed = 3;<br>
+    maxforce = 0.01;
+  }<br><br>
+
+  void run(ArrayList<Boid> boids) {<br>
+    flock(boids);<br>
+    update();<br>
+    borders();<br>
+    render(); }
+  <br><br>
+  void applyForce(PVector force) {<br>
+    // We could add mass here if we want A = F / M<br>
+    acceleration.add(force);
+  }<br><br>
+
+  void flock(ArrayList<Boid> boids) {<br>
+    PVector sep = separate(boids);   // Separation<br>
+    PVector ali = align(boids);      // Alignment<br>
+    PVector coh = cohesion(boids);   // Cohesion<br>
+
+    sep.mult(1.5);<br>
+    ali.mult(1.0);<br>
+    coh.mult(1.0);<br>
+
+    applyForce(sep);<br>
+    applyForce(ali);<br>
+    applyForce(coh);
+  }<br><br>
+
+  void update() {<br>
+    velocity.add(acceleration);<br>
+    velocity.limit(maxspeed);<br>
+    position.add(velocity);<br>
+    acceleration.mult(0);<br>
+
+   PVector frpos1, frpos2;<br>
+  PVector flpos1, flpos2;<br>
+  PVector fcenter;<br>
+  float _angle, _angle2;<br>
+  float _angnoise, _angnoise2;<br>
+  float rad, rad2;<br>
+  float _radius1, _radius2;<br>
+  float _radiusnoise, _radiusnoise2;<br>
+    
+    
+     frpos1 = new PVector();<br>
+   frpos2 = new PVector();<br>
+   fcenter = new PVector(width/2, height/2);<br>
+   _angle = -PI/2;<br>
+   _angle2 = -PI/2;<br>
+   _angnoise = 50;<br>
+   _angnoise2 = 150;<br>
+   rad = _angle*DEG_TO_RAD;<br>
+   rad2 = _angle2*DEG_TO_RAD;<br>
+   _radius1 = 100;<br>
+   _radius2 = 100;<br>
+   _radiusnoise = 10;<br>
+   _radiusnoise2 = 20;<br>
+
+    
+ 
+    
+    PVector mouse = new PVector(fcenter.x + (_radius1 * sin(rad)), fcenter.y + (_radius1 * cos(rad)));<br>
+    PVector dir = PVector.sub(mouse, position);<br>
+    dir.normalize();  <br>
+    dir.mult(suivre);<br>
+    acceleration = dir;<br>
+    _radius1+=100;
+  }<br><br>
+
+  PVector seek(PVector target) {<br>
+    PVector desired = PVector.sub(target, position);  <br>
+
+    desired.normalize();<br>
+    desired.mult(maxspeed);<br>
+
+    PVector steer = PVector.sub(desired, velocity);<br>
+    steer.limit(maxforce);  // Limit to maximum steering force<br>
+    return steer;
+  }<br><br>
+
+  void render() {<br>
+    float theta = velocity.heading() + radians(90);<br>
+
+    fill(255);<br>
+    pushMatrix();<br>
+    translate(position.x, position.y);<br>
+    rotate(theta);<br>
+    strokeWeight(1);<br>
+    ellipse(4, 12, 4*velocity.x, 4*velocity.y);<br>
+    popMatrix(); }<br>
+
+  void borders() {<br>
+    if (position.x < -r) position.x = width+r;<br>
+    if (position.y < -r) position.y = height+r;<br>
+    if (position.x > width+r) position.x = -r;<br>
+    if (position.y > height+r) position.y = -r; }<br>
+    <br>
+  PVector separate (ArrayList<Boid> boids) {<br>
+    float desiredseparation = 25.0f;<br>
+    PVector steer = new PVector(0, 0, 0);<br>
+    int count = 0;<br>
+    for (Boid other : boids) {<br>
+      float d = PVector.dist(position, other.position);<br>
+      if ((d > 0) && (d < desiredseparation)) {<br>
+
+        PVector diff = PVector.sub(position, other.position);<br>
+        diff.normalize();<br>
+        diff.div(d);        // Weight by distance<br>
+        steer.add(diff);<br>
+        count++;            // Keep track of how many<br>
+      }<br>
+    }<br>
+
+    if (count > 0) {<br>
+      steer.div((float)count);
+    }<br>
+
+    if (steer.mag() > 0) {<br>
+
+      steer.normalize();<br>
+      steer.mult(maxspeed);<br>
+      steer.sub(velocity);<br>
+      steer.limit(maxforce);
+    }<br>
+    return steer;<br>
+  }<br>
+
+  PVector align (ArrayList<Boid> boids) {<br>
+    float neighbordist = 50;<br>
+    PVector sum = new PVector(0, 0);<br>
+    int count = 0;<br>
+    for (Boid other : boids) {<br>
+      float d = PVector.dist(position, other.position);<br>
+      if ((d > 0) && (d < neighbordist)) {<br>
+        sum.add(other.velocity);<br>
+        count++;
+      }<br>
+    }<br>
+    if (count > 0) {<br>
+      sum.div((float)count);<br>
+      sum.normalize();<br>
+      sum.mult(maxspeed);<br>
+      PVector steer = PVector.sub(sum, velocity);<br>
+      steer.limit(maxforce);<br>
+      return steer;<br>
+    } else {<br>
+      return new PVector(0, 0);<br>
+    }<br>
+  }<br><br>
+
+ 
+  PVector cohesion (ArrayList<Boid> boids) {<br>
+    float neighbordist = 50;<br>
+    PVector sum = new PVector(0, 0);  <br> 
+    int count = 0;<br>
+    for (Boid other : boids) {<br>
+      float d = PVector.dist(position, other.position);<br>
+      if ((d > 0) && (d < neighbordist)) {<br>
+        sum.add(other.position); <br>
+        count++;<br>
+      }<br>
+    }<br>
+    if (count > 0) {<br>
+      sum.div(count);<br>
+      return seek(sum);  <br>
+    } else {<br>
+      return new PVector(0, 0);<br>
+    }<br>
+  }<br>
+}<br>
+
+void keyPressed() {<br>
+    <br>
+  //STOPPER LE SUIVI<br>
+  if (key == 's') suivre = 0;<br>
+
+  <br>
+  // AUGMENTE OU BAISSE LE SUIVI<br>
+  if (keyCode == UP) {<br>
+    suivre = suivre+0.02; }<br>
+
+  if (keyCode == DOWN) {<br>
+    if (suivre>0) {<br>
+      suivre = suivre-0.005; }<br>
+  }<br>
+}<br>
+        </p> </div>
+
+ </div>
+</div>
+
+</body>
+
+</html>
